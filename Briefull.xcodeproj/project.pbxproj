@@ -35,6 +35,14 @@
 		E052D885299132C7004706F5 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E052D884299132C7004706F5 /* ImagePicker.swift */; };
 		E052D8872991330F004706F5 /* ExtensionFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E052D8862991330F004706F5 /* ExtensionFile.swift */; };
 		E052D88929917BB2004706F5 /* VlogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E052D88829917BB2004706F5 /* VlogViewModel.swift */; };
+		E0D9081729923A25001C2259 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D9081629923A25001C2259 /* UserModel.swift */; };
+		E0D9081C29924890001C2259 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D9081B29924890001C2259 /* StorageService.swift */; };
+		E0D9081E299248AA001C2259 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D9081D299248AA001C2259 /* AuthService.swift */; };
+		E0D9082029939FF4001C2259 /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D9081F29939FF4001C2259 /* SessionStore.swift */; };
+		E0D908242993D681001C2259 /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D908232993D681001C2259 /* Timeline.swift */; };
+		E0D908262993D751001C2259 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D908252993D751001C2259 /* HomeView.swift */; };
+		E0D9082829941BE4001C2259 /* VlogModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D9082729941BE4001C2259 /* VlogModel.swift */; };
+		E0D9082A2994BF25001C2259 /* VedioService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D908292994BF25001C2259 /* VedioService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +72,15 @@
 		E052D884299132C7004706F5 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		E052D8862991330F004706F5 /* ExtensionFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionFile.swift; sourceTree = "<group>"; };
 		E052D88829917BB2004706F5 /* VlogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VlogViewModel.swift; sourceTree = "<group>"; };
+		E0D90813299229CC001C2259 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		E0D9081629923A25001C2259 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		E0D9081B29924890001C2259 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
+		E0D9081D299248AA001C2259 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		E0D9081F29939FF4001C2259 /* SessionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStore.swift; sourceTree = "<group>"; };
+		E0D908232993D681001C2259 /* Timeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timeline.swift; sourceTree = "<group>"; };
+		E0D908252993D751001C2259 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		E0D9082729941BE4001C2259 /* VlogModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VlogModel.swift; sourceTree = "<group>"; };
+		E0D908292994BF25001C2259 /* VedioService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VedioService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +116,7 @@
 		E052D83C298BE8B6004706F5 /* Briefull */ = {
 			isa = PBXGroup;
 			children = (
+				E0D90813299229CC001C2259 /* Info.plist */,
 				E052D83D298BE8B6004706F5 /* BriefullApp.swift */,
 				E052D8752990F4BC004706F5 /* GoogleService-Info.plist */,
 				E052D868298BEE6B004706F5 /* Extension */,
@@ -135,6 +153,9 @@
 				E052D86B298EBA77004706F5 /* ResetPasswordSheet.swift */,
 				E052D86F298EBAB7004706F5 /* ForgetPasswordSheet.swift */,
 				E052D871298ED6A9004706F5 /* ImojiSheet.swift */,
+				E0D908232993D681001C2259 /* Timeline.swift */,
+				E0D908252993D751001C2259 /* HomeView.swift */,
+				E0D9082729941BE4001C2259 /* VlogModel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -142,6 +163,7 @@
 		E052D84C298BE905004706F5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E0D9081629923A25001C2259 /* UserModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -149,9 +171,13 @@
 		E052D84D298BE910004706F5 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				E0D9081D299248AA001C2259 /* AuthService.swift */,
+				E0D9081B29924890001C2259 /* StorageService.swift */,
 				E052D88029911B93004706F5 /* SignUpViewModel.swift */,
 				E052D88229911C3E004706F5 /* Coordinator.swift */,
 				E052D88829917BB2004706F5 /* VlogViewModel.swift */,
+				E0D9081F29939FF4001C2259 /* SessionStore.swift */,
+				E0D908292994BF25001C2259 /* VedioService.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -247,6 +273,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0D9082029939FF4001C2259 /* SessionStore.swift in Sources */,
+				E0D908262993D751001C2259 /* HomeView.swift in Sources */,
 				E052D88929917BB2004706F5 /* VlogViewModel.swift in Sources */,
 				E052D863298BEAEA004706F5 /* AddReaction.swift in Sources */,
 				E052D87F29911B61004706F5 /* ErrorMessage.swift in Sources */,
@@ -254,15 +282,21 @@
 				E052D8872991330F004706F5 /* ExtensionFile.swift in Sources */,
 				E052D85D298BEA22004706F5 /* FindFriends.swift in Sources */,
 				E052D88129911B93004706F5 /* SignUpViewModel.swift in Sources */,
+				E0D9082829941BE4001C2259 /* VlogModel.swift in Sources */,
+				E0D9081E299248AA001C2259 /* AuthService.swift in Sources */,
 				E052D84F298BE942004706F5 /* Main.swift in Sources */,
+				E0D9081729923A25001C2259 /* UserModel.swift in Sources */,
 				E052D88329911C3E004706F5 /* Coordinator.swift in Sources */,
 				E052D859298BE994004706F5 /* Profile.swift in Sources */,
 				E052D86A298BEE99004706F5 /* Items.swift in Sources */,
 				E052D861298BEAA0004706F5 /* EditPersonalInfo.swift in Sources */,
+				E0D9081C29924890001C2259 /* StorageService.swift in Sources */,
 				E052D865298BEBED004706F5 /* Tab.swift in Sources */,
 				E052D870298EBAB7004706F5 /* ForgetPasswordSheet.swift in Sources */,
+				E0D908242993D681001C2259 /* Timeline.swift in Sources */,
 				E052D853298BE95C004706F5 /* SignUp.swift in Sources */,
 				E052D855298BE975004706F5 /* Vlog.swift in Sources */,
+				E0D9082A2994BF25001C2259 /* VedioService.swift in Sources */,
 				E052D872298ED6A9004706F5 /* ImojiSheet.swift in Sources */,
 				E052D86C298EBA77004706F5 /* ResetPasswordSheet.swift in Sources */,
 				E052D851298BE950004706F5 /* SignIn.swift in Sources */,
@@ -400,6 +434,8 @@
 				DEVELOPMENT_TEAM = QBHM4NR7GG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Briefull/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Please Allow Briefull To Access Your Camera in Order to use this app";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -432,6 +468,8 @@
 				DEVELOPMENT_TEAM = QBHM4NR7GG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Briefull/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Please Allow Briefull To Access Your Camera in Order to use this app";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

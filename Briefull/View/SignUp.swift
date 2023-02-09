@@ -17,45 +17,92 @@ struct SignUp: View {
     @StateObject private var vm = SignUpViewModel()
     @EnvironmentObject var coordinator: Coordinator
     @State var showLogInSheet = false
+    @Environment(\.presentationMode) var presentationMode
+    @State private var error:String = ""
+    @State private var showingAlert = false
+    @State private var alertTitle: String = "Oh No"
+    
+    func errorCheck() -> String? {
+        if email.trimmingCharacters (in: .whitespaces).isEmpty ||
+            passWord.trimmingCharacters (in: .whitespaces).isEmpty ||
+            
+            userName.trimmingCharacters(in: .whitespaces).isEmpty {
+            return "Please Fill in all fields"
+        }
+        return nil
+        
+    }
+    func clear(){
+        self.email = ""
+        self.userName = ""
+        self.passWord = ""
+//        self.imageData = Date()
+        
+    }
+    func signUp() {
+        if let error = errorCheck() {
+            self.error = error
+            self.showingAlert = true
+            self.clear()
+            return
+        }
+      
+        AuthService.signUp(username: userName, email: email, password: passWord, imageData:Data(), onSuccess:{
+            (user) in self.clear()
+        }){ errorMessage in
+           print("Error \(errorMessage)")
+            self.error = errorMessage
+            self.showingAlert = true
+            return
+        }
+    }
+                           
     var body: some View {
         VStack{
             
             ScrollView {
                 ZStack(alignment: .center){
-                    Color(.yellow).opacity(0.40)
+                  
                     
                     VStack(alignment: .leading){
                         Text("Sign Up").padding(.vertical).padding(.top,200).modifier(Items.TexStyleModifier()).padding(.bottom,100)
-                        TextField("Enter userName", text: $userName).padding().modifier(Items.TextFieldStyleModifier())
-                        TextField("Enter Your Email Address", text: $email).padding().modifier(Items.TextFieldStyleModifier()).keyboardType(.emailAddress)
-                        SecureField("Enter Your PassWord", text: $passWord).padding().modifier(Items.TextFieldStyleModifier())
-                        SecureField("Re - Enter Your PassWord", text: $ConfermPassWord).padding().modifier(Items.TextFieldStyleModifier())
-                        Button("Sign Up") {
-                            vm.signUp(email: email, password: passWord) { result in
-                                switch result {
-                                case .success(_):
-                                    coordinator.path.append(.login)
-                                case .failure(let error):
-                                    vm.errorMessage = error.errorMessage
-                                }
-                            }
-                            
-                            
-                        }.modifier(Items.ButtonModifier()).padding().foregroundColor(.white)
+                        TextField("Enter userName", text: $userName).textFieldStyle(RoundedBorderTextFieldStyle()).padding()
+                        TextField("Enter Your Email Address", text: $email).textFieldStyle(RoundedBorderTextFieldStyle()).padding().keyboardType(.emailAddress)
+                        SecureField("Enter Your PassWord", text: $passWord).textFieldStyle(RoundedBorderTextFieldStyle()).padding()
+                        SecureField("Re - Enter Your PassWord", text: $ConfermPassWord).textFieldStyle(RoundedBorderTextFieldStyle()).padding()
+                        Button {
+                            signUp()
+                        } label: {
+                            Text("Sign Up")
+                        }.modifier(Items.ButtonModifier()).alert(isPresented: $showingAlert){
+                            Alert(title: Text(alertTitle),message: Text(error),dismissButton: .default(Text("OK")))
+                        }
+//
+//                        Button("Sign Up") {
+//
+//                            vm.signUp(email: email, password: passWord) { result in
+//                                switch result {
+//                                case .success(_):
+//                                    coordinator.path.append(.login)
+//                                case .failure(let error):
+//                                    vm.errorMessage = error.errorMessage
+//                                }
+//                            }
+//
+//
+//                        }.modifier(Items.ButtonModifier()).padding().foregroundColor(.white)
                         if let errorMessage = vm.errorMessage {
                             Text(errorMessage)
                         }
                         HStack{
                             Spacer()
-                            NavigationLink(destination: SignIn()) {
-                              Text("Have an Account?")
-                            }
-//                            Button("Have an Account?", action: {
-                               
-                               // showLogInSheet.toggle()
-//                          SignIn()
+//                            NavigationLink(destination: SignIn()) {
+//                              Text("Have an Account?")
+//                            }
+                            Button("Have an Account?", action: {
+                                presentationMode.wrappedValue.dismiss()
                                 
-//                            })
+                            }).foregroundColor(Color("mauve"))
                           
 
 
@@ -94,14 +141,15 @@ struct SignUp: View {
 
 struct SignUp_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationStack {
-            SignUp()
-        }.navigationDestination(for: Route.self) { route in
-            switch route {
-            case .login:
-                Text("LOGIN SCREEN")
-                
-            }
-        }
+        SignUp()
+//        NavigationStack {
+//            SignUp()
+//        }.navigationDestination(for: Route.self) { route in
+//            switch route {
+//            case .SessionStore:
+//                Text("SessionStore")
+//
+//            }
+//        }
     }
 }

@@ -11,48 +11,91 @@ struct SignIn: View {
     @State var email = ""
     @State var passWord = ""
     @StateObject private var vm = SignUpViewModel()
-
+    @State var showVlogSheet = false
+    @State private var error:String = ""
+    @State private var showingAlert = false
+    @State private var alertTitle: String = "Oh No"
+    
+    
+    func errorCheck() -> String? {
+        if email.trimmingCharacters (in: .whitespaces).isEmpty ||
+            passWord.trimmingCharacters (in: .whitespaces).isEmpty {
+            return "Please Fill in all fields"
+        }
+        return nil
+        
+    }
+    func clear(){
+        self.email = ""
+        self.passWord = ""
+    }
+    
+    func signIn() {
+        if let error = errorCheck() {
+            self.error = error
+            self.showingAlert = true
+            self.clear()
+            return
+        }
+      
+        AuthService.signIn(email: email, password: passWord, onSuccess:{
+            (user) in
+            self.clear()
+        }){ errorMessage in
+            print("Error \(errorMessage)")
+             self.error = errorMessage
+             self.showingAlert = true
+             return
+         }
+    }
+    
     var body: some View {
         VStack{
             ScrollView {
                 ZStack(alignment: .center){
-                    Color(.yellow).opacity(0.40)
+                    
                     
                     VStack(alignment: .leading){
                         Text("Sign In").padding(.top,200).modifier(Items.TexStyleModifier()).padding(.bottom,100)
                         
-                        TextField("  Enter Your Email Address", text: $email).modifier(Items.TextFieldStyleModifier())
-                        SecureField("   Enter Your PassWord", text: $passWord).modifier(Items.TextFieldStyleModifier())
+                        TextField("  Enter Your Email Address", text: $email).textFieldStyle(RoundedBorderTextFieldStyle()).padding()
+                        SecureField("   Enter Your PassWord", text: $passWord).textFieldStyle(RoundedBorderTextFieldStyle()).padding()
                         Button {
+                            signIn()
+//                            showVlogSheet = true
                             
                         } label: {
                         Text("Sign In") .foregroundColor(Color(.white))
-                        }.modifier(Items.ButtonModifier()).padding()
-                        if let errorMessage = vm.errorMessage {
-                            Text(errorMessage)
+                        }.modifier(Items.ButtonModifier()).padding().alert(isPresented: $showingAlert){
+                            Alert(title: Text(alertTitle),message: Text(error),dismissButton: .default(Text("OK")))
                         }
+                        
+//                        if let errorMessage = vm.errorMessage {
+//                            Text(errorMessage)
+//                        }
                         HStack{
                             Button {
-                                
+                              
                             } label: {
                                 Text("Forget Password")
                             }
                             Spacer()
-                            Button {
-                                
-                            } label: {
-                                Text("Create New Account?")
+                            NavigationLink(destination: SignUp()) {
+                                Text("Create New Account?").foregroundColor((Color("mauve")))
                             }
 
 
-                        }.padding()
+                        }.padding().accentColor(Color("mauve"))
 
                     }.padding().padding(.bottom,400)
                 }
                 
             }
-        }.ignoresSafeArea()
+        }.fullScreenCover(isPresented: $showVlogSheet) {
+           Tab()
+        }
     }
+    
 }
 
 struct SignIn_Previews: PreviewProvider {

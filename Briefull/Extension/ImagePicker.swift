@@ -7,23 +7,24 @@
 
 
 import SwiftUI
-import UIKit
+
 
 
 struct ImagePicker: UIViewControllerRepresentable {
     
-    @Binding var selectedImage: UIImage
+//    @Binding var selectedImage: UIImage
+    @Binding var selectedImage: Image?
     @Binding var showImagePiker: Bool
     @Binding var imageData:Data
     
     @Environment(\.presentationMode) private var presentationMode
     var sourceType: UIImagePickerController.SourceType = .photoLibrary
     
-    func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> UIImagePickerController {
+    func makeUIViewController(context: Context) -> UIImagePickerController {
         
         let imagePicker = UIImagePickerController()
-        imagePicker.allowsEditing = false
-        imagePicker.sourceType = sourceType
+        imagePicker.allowsEditing = true
+//        imagePicker.sourceType = sourceType
         imagePicker.delegate = context.coordinator
         
         return imagePicker
@@ -45,16 +46,28 @@ struct ImagePicker: UIViewControllerRepresentable {
     
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
      
-            if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-                parent.selectedImage = image
+            if let image = info[.editedImage] as? UIImage,let mediaData = image.jpegData(compressionQuality: 0.5){
+                parent.selectedImage = Image(uiImage: image)
+                parent.imageData = mediaData
             }
+            parent.showImagePiker = false
      
-            parent.presentationMode.wrappedValue.dismiss()
+//            parent.presentationMode.wrappedValue.dismiss()
         }
     }
     
-    func makeCoordinator() -> Coordinator {
+    func makeCoordinator() -> ImagePicker.Coordinator {
         Coordinator(self)
     }
     
 }
+
+
+//func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+//
+//    if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+//        parent.selectedImage = image
+//    }
+//
+//    parent.presentationMode.wrappedValue.dismiss()
+//}

@@ -17,6 +17,7 @@ struct Items: View {
                // .frame(maxWidth: .infinity)
                 .frame(width:frameSize,height: 55)
                 .background(Color.black)
+                .foregroundColor(.white)
                 .cornerRadius(20)
                 
                

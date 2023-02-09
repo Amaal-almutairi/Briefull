@@ -8,63 +8,57 @@
 import SwiftUI
 
 struct Profile: View {
-    @State var changeProfileImage = false
-    @State var openCameraRoll = false
-    @State var imageSelected = UIImage()
+    
     @State var userName = ""
     @State var nickName = ""
+    @EnvironmentObject var sessionVm: SessionStore
+
+    
+    
     var body: some View {
-     
-            VStack(alignment: .center){
-                ZStack(alignment: .bottomTrailing) {
-                    Button(action: {
-                        changeProfileImage = true
-                        openCameraRoll = true
+        
+        VStack{
+//            NavigationView{
+                ScrollView{
+                    VStack(alignment: .center){
                         
-                    }, label: {
-                        if changeProfileImage {
-                            Image(uiImage: imageSelected)
-                                .profileImageMod()
-                        } else {
+                        ZStack(alignment: .bottomTrailing) {
                             Image("profileImage")
                                 .profileImageMod()
+                            
                         }
+                        Text(" nickName \(nickName)").font(.headline)
+                        Text(sessionVm.session?.username ?? "UkUsername")
                         
-                    })
-                    
-                    Image(systemName: "highlighter")
-                        .frame(width: 30, height: 30)
-                        .foregroundColor(.white)
-                        .background(Color("mauve"))
-                        .clipShape(Circle())
-                    
-                }.sheet(isPresented: $openCameraRoll) {
-                    ImagePicker(selectedImage: $imageSelected, sourceType: .photoLibrary)
+                        HStack{
+                            VStack{
+                                Text(" Vlogs \(nickName)").padding(.leading, 50)
+                                Text(" 6 \(nickName)").font(.headline).padding(.leading, 50)
+                            }
+                            Spacer().padding()
+                            VStack{
+                                Text(" Friends \(nickName)").padding(.trailing, 50)
+                                Text(" 10 \(nickName)").font(.headline).padding(.trailing, 50)
+                            }
+                        } .padding()
+                        Divider().fontWidth(.standard)
+                        Spacer()
+                        
+                    }.navigationTitle("Profile")
+                        .navigationBarItems(trailing: NavigationLink(destination: EditPersonalInfo(), label: {
+                            Text("Edit").foregroundColor(Color("mauve"))
+                        }))
                 }
-                Text(" nickName \(nickName)").font(.headline)
-                Text(" userName \(userName)")
-                   
-                HStack{
-                    VStack{
-                        Text(" Vlogs \(nickName)").padding(.leading, 50)
-                        Text(" 6 \(nickName)").font(.headline).padding(.leading, 50)
-                    }
-                    Spacer().padding()
-                    VStack{
-                        Text(" Friends \(nickName)").padding(.trailing, 50)
-                        Text(" 10 \(nickName)").font(.headline).padding(.trailing, 50)
-                    }
-                } .padding()
-                Divider().fontWidth(.standard)
-                Spacer()
-
-            }.navigationTitle("Prpfile")
-           
+//            }
+            .navigationViewStyle(.stack)
+        }
     }
+    
 }
 
 struct Profile_Previews: PreviewProvider {
+    var sessionVm: SessionStore
     static var previews: some View {
-        Profile()
+        Profile().environmentObject(SessionStore())
     }
 }

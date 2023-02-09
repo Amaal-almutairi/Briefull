@@ -17,26 +17,17 @@ enum Route: Hashable {
 struct BriefullApp: App {
     // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    @ObservedObject var coordinator = Coordinator()
-    
+    @StateObject var coordinator = Coordinator()
+    @StateObject var session: SessionStore = SessionStore()
     var body: some Scene {
         WindowGroup {
-            NavigationStack(path: $coordinator.path) {
-                
-                //NavigationView{
-                SignUp()
-                    .navigationDestination(for: Route.self) { route in
-                        switch route {
-                        case .login:
-                            Text("LOGIN SCREEN")
-                            
-                        }
-                    }
-            }.environmentObject(coordinator)
-            //}
+            NavigationView{
+                HomeView()
+            }.environmentObject(SessionStore())
+        }
         }
     }
-}
+
 
 
 
@@ -48,3 +39,31 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     }
 }
 
+
+
+
+/*
+ struct BriefullApp: App {
+     // register app delegate for Firebase setup
+     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+     @ObservedObject var coordinator = Coordinator()
+     
+     var body: some Scene {
+         WindowGroup {
+             NavigationStack(path: $coordinator.path) {
+                 
+                 //NavigationView{
+                 SignIn()
+                     .navigationDestination(for: Route.self) { route in
+                         switch route {
+                         case .login:
+                             Text("LOGIN SCREEN")
+                             
+                         }
+                     }
+             }.environmentObject(coordinator)
+             //}
+         }
+     }
+ }
+ */
