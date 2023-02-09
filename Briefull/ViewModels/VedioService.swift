@@ -14,12 +14,12 @@ import FirebaseFirestore
 
 class VideoService{
     
-    static var Videos = AuthService.storeRoot.collection("posts")
-    static var AllVideos = AuthService.storeRoot.collection("allPosts")
+    static var Videos = AuthService.storeRoot.collection("Vlogs")
+    static var AllVideos = AuthService.storeRoot.collection("allVlogs")
     static var Timeline = AuthService.storeRoot.collection("timeline")
     
     static func VideosUserId(userId: String) -> DocumentReference {
-        return Videos.document (userId)
+        return Videos.document(userId)
     }
     
     static func timelineUserId(userld: String) -> DocumentReference {
@@ -31,10 +31,12 @@ class VideoService{
         guard let userld = Auth.auth().currentUser?.uid else {
             return
         }
-//        
-//        let storagePostRef = StorageService.storagePostId(postId: postId)
-//        let metadata = StorageMetadata ()
-//        metadata.contentType = ""
+        
+        let videoId = VideoService.VideosUserId(userId: userld).collection("Vlogs")
+        let storageVideo = StorageService.storageVideoId(videoId: userld)
+        let metadata = StorageMetadata ()
+        metadata.contentType = ""
+        
     }
     
 }

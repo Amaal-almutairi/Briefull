@@ -70,12 +70,25 @@ class StorageService{
         }
     }
     
-    static func saveVideo(user:String, caption:String, videoId:String, imageData:Data, metaData:StorageMetadata, storageProfileImageRef: StorageReference, onSuccess: @escaping() -> Void ,onError: @escaping(_ errorMessage: String) -> Void){
+    static func saveVideo(user:String, caption:String, videoId:String, imageData:Data, metaData:StorageMetadata, storageVideoRef: StorageReference, onSuccess: @escaping() -> Void ,onError: @escaping(_ errorMessage: String) -> Void){
         
-        
+        storageVideoRef.putData(imageData,metadata:metaData){
+            (StorageMetadata, error) in
+            if error != nil {
+                onError (error!.localizedDescription)
+                return
+            }
+            storageVideoRef.putData(imageData, metadata: metaData) {
+                (StorageMetadata, error) in
+                if error != nil {
+                    onError (error!.localizedDescription)
+                    return
+                }
+            }
+            
+        }
     }
-    
-} 
+}
 
 /*
  static func saveProfileImage(userId:String, username:String, email:String, imageData: Data,
