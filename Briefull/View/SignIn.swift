@@ -15,6 +15,12 @@ struct SignIn: View {
     @State private var error:String = ""
     @State private var showingAlert = false
     @State private var alertTitle: String = "Oh No"
+    @EnvironmentObject var session: SessionStore
+    
+    
+    func listen(){
+        session.listen()
+    }
     
     
     func errorCheck() -> String? {
@@ -58,15 +64,15 @@ struct SignIn: View {
                     VStack(alignment: .leading){
                         Text("Sign In").padding(.top,200).modifier(Items.TexStyleModifier()).padding(.bottom,100)
                         
-                        TextField("  Enter Your Email Address", text: $email).textFieldStyle(RoundedBorderTextFieldStyle()).padding()
-                        SecureField("   Enter Your PassWord", text: $passWord).textFieldStyle(RoundedBorderTextFieldStyle()).padding()
-                        Button {
-                            signIn()
-//                            showVlogSheet = true
-                            
-                        } label: {
-                        Text("Sign In") .foregroundColor(Color(.white))
-                        }.modifier(Items.ButtonModifier()).padding().alert(isPresented: $showingAlert){
+                        TextField("Enter Your Email Address", text: $email).padding()
+                            //.textFieldStyle(RoundedBorderTextFieldStyle()).padding()
+                        SecureField(" Enter Your PassWord", text: $passWord).padding()
+                            //.textFieldStyle(RoundedBorderTextFieldStyle()).padding()
+                        Button(action: { signIn()
+                        listen()
+                    }){
+                        Text("Sign In")
+                    }.modifier(Items.ButtonModifier()).padding().alert(isPresented: $showingAlert){
                             Alert(title: Text(alertTitle),message: Text(error),dismissButton: .default(Text("OK")))
                         }
                         
@@ -90,7 +96,7 @@ struct SignIn: View {
                     }.padding().padding(.bottom,400)
                 }
                 
-            }
+            }.navigationBarBackButtonHidden(true)
         }.fullScreenCover(isPresented: $showVlogSheet) {
            Tab()
         }
@@ -100,7 +106,8 @@ struct SignIn: View {
 
 struct SignIn_Previews: PreviewProvider {
     var vm = SignUpViewModel()
+    var session:SessionStore
     static var previews: some View {
-        SignIn().environmentObject(SignUpViewModel())
+        SignIn().environmentObject(SignUpViewModel()).environmentObject(SessionStore())
     }
 }

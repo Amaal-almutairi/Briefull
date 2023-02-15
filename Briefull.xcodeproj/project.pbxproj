@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E0102A94299CAB27001D3C08 /* VideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0102A93299CAB27001D3C08 /* VideoModel.swift */; };
+		E0102A96299CAD65001D3C08 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0102A95299CAD65001D3C08 /* UserProfile.swift */; };
+		E0102A98299CAD9A001D3C08 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0102A97299CAD9A001D3C08 /* SearchBar.swift */; };
+		E0102A9A299CADAD001D3C08 /* ProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0102A99299CADAD001D3C08 /* ProfileHeader.swift */; };
+		E0102A9C299CADBE001D3C08 /* FollowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0102A9B299CADBE001D3C08 /* FollowButton.swift */; };
+		E0102A9E299CADD0001D3C08 /* UsersProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0102A9D299CADD0001D3C08 /* UsersProfileView.swift */; };
+		E0102AA0299CAE1C001D3C08 /* VideotCardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0102A9F299CAE1C001D3C08 /* VideotCardService.swift */; };
+		E0102AA2299CAE2D001D3C08 /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0102AA1299CAE2D001D3C08 /* ProfileService.swift */; };
+		E0102AA4299CAE3B001D3C08 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0102AA3299CAE3B001D3C08 /* SearchService.swift */; };
+		E0102AA6299CAE44001D3C08 /* FollowService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0102AA5299CAE44001D3C08 /* FollowService.swift */; };
 		E052D83E298BE8B6004706F5 /* BriefullApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E052D83D298BE8B6004706F5 /* BriefullApp.swift */; };
 		E052D842298BE8B7004706F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E052D841298BE8B7004706F5 /* Assets.xcassets */; };
 		E052D845298BE8B7004706F5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E052D844298BE8B7004706F5 /* Preview Assets.xcassets */; };
@@ -16,7 +26,6 @@
 		E052D855298BE975004706F5 /* Vlog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E052D854298BE975004706F5 /* Vlog.swift */; };
 		E052D859298BE994004706F5 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E052D858298BE994004706F5 /* Profile.swift */; };
 		E052D85D298BEA22004706F5 /* FindFriends.swift in Sources */ = {isa = PBXBuildFile; fileRef = E052D85C298BEA22004706F5 /* FindFriends.swift */; };
-		E052D85F298BEA4F004706F5 /* AddFriends.swift in Sources */ = {isa = PBXBuildFile; fileRef = E052D85E298BEA4F004706F5 /* AddFriends.swift */; };
 		E052D861298BEAA0004706F5 /* EditPersonalInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E052D860298BEAA0004706F5 /* EditPersonalInfo.swift */; };
 		E052D863298BEAEA004706F5 /* AddReaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E052D862298BEAEA004706F5 /* AddReaction.swift */; };
 		E052D865298BEBED004706F5 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = E052D864298BEBED004706F5 /* Tab.swift */; };
@@ -41,11 +50,20 @@
 		E0D9082029939FF4001C2259 /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D9081F29939FF4001C2259 /* SessionStore.swift */; };
 		E0D908242993D681001C2259 /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D908232993D681001C2259 /* Timeline.swift */; };
 		E0D908262993D751001C2259 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D908252993D751001C2259 /* HomeView.swift */; };
-		E0D9082829941BE4001C2259 /* VlogModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D9082729941BE4001C2259 /* VlogModel.swift */; };
 		E0D9082A2994BF25001C2259 /* VedioService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D908292994BF25001C2259 /* VedioService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E0102A93299CAB27001D3C08 /* VideoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoModel.swift; sourceTree = "<group>"; };
+		E0102A95299CAD65001D3C08 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		E0102A97299CAD9A001D3C08 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		E0102A99299CADAD001D3C08 /* ProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeader.swift; sourceTree = "<group>"; };
+		E0102A9B299CADBE001D3C08 /* FollowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowButton.swift; sourceTree = "<group>"; };
+		E0102A9D299CADD0001D3C08 /* UsersProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersProfileView.swift; sourceTree = "<group>"; };
+		E0102A9F299CAE1C001D3C08 /* VideotCardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideotCardService.swift; sourceTree = "<group>"; };
+		E0102AA1299CAE2D001D3C08 /* ProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
+		E0102AA3299CAE3B001D3C08 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
+		E0102AA5299CAE44001D3C08 /* FollowService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowService.swift; sourceTree = "<group>"; };
 		E052D83A298BE8B6004706F5 /* Briefull.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Briefull.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E052D83D298BE8B6004706F5 /* BriefullApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BriefullApp.swift; sourceTree = "<group>"; };
 		E052D841298BE8B7004706F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -56,7 +74,6 @@
 		E052D854298BE975004706F5 /* Vlog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vlog.swift; sourceTree = "<group>"; };
 		E052D858298BE994004706F5 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		E052D85C298BEA22004706F5 /* FindFriends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindFriends.swift; sourceTree = "<group>"; };
-		E052D85E298BEA4F004706F5 /* AddFriends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriends.swift; sourceTree = "<group>"; };
 		E052D860298BEAA0004706F5 /* EditPersonalInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPersonalInfo.swift; sourceTree = "<group>"; };
 		E052D862298BEAEA004706F5 /* AddReaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReaction.swift; sourceTree = "<group>"; };
 		E052D864298BEBED004706F5 /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
@@ -79,7 +96,6 @@
 		E0D9081F29939FF4001C2259 /* SessionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStore.swift; sourceTree = "<group>"; };
 		E0D908232993D681001C2259 /* Timeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timeline.swift; sourceTree = "<group>"; };
 		E0D908252993D751001C2259 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		E0D9082729941BE4001C2259 /* VlogModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VlogModel.swift; sourceTree = "<group>"; };
 		E0D908292994BF25001C2259 /* VedioService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VedioService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -147,7 +163,7 @@
 				E052D854298BE975004706F5 /* Vlog.swift */,
 				E052D858298BE994004706F5 /* Profile.swift */,
 				E052D85C298BEA22004706F5 /* FindFriends.swift */,
-				E052D85E298BEA4F004706F5 /* AddFriends.swift */,
+				E0102A95299CAD65001D3C08 /* UserProfile.swift */,
 				E052D860298BEAA0004706F5 /* EditPersonalInfo.swift */,
 				E052D862298BEAEA004706F5 /* AddReaction.swift */,
 				E052D86B298EBA77004706F5 /* ResetPasswordSheet.swift */,
@@ -155,7 +171,10 @@
 				E052D871298ED6A9004706F5 /* ImojiSheet.swift */,
 				E0D908232993D681001C2259 /* Timeline.swift */,
 				E0D908252993D751001C2259 /* HomeView.swift */,
-				E0D9082729941BE4001C2259 /* VlogModel.swift */,
+				E0102A97299CAD9A001D3C08 /* SearchBar.swift */,
+				E0102A99299CADAD001D3C08 /* ProfileHeader.swift */,
+				E0102A9B299CADBE001D3C08 /* FollowButton.swift */,
+				E0102A9D299CADD0001D3C08 /* UsersProfileView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -164,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				E0D9081629923A25001C2259 /* UserModel.swift */,
+				E0102A93299CAB27001D3C08 /* VideoModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -178,6 +198,10 @@
 				E052D88829917BB2004706F5 /* VlogViewModel.swift */,
 				E0D9081F29939FF4001C2259 /* SessionStore.swift */,
 				E0D908292994BF25001C2259 /* VedioService.swift */,
+				E0102A9F299CAE1C001D3C08 /* VideotCardService.swift */,
+				E0102AA1299CAE2D001D3C08 /* ProfileService.swift */,
+				E0102AA3299CAE3B001D3C08 /* SearchService.swift */,
+				E0102AA5299CAE44001D3C08 /* FollowService.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -274,15 +298,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0D9082029939FF4001C2259 /* SessionStore.swift in Sources */,
+				E0102AA4299CAE3B001D3C08 /* SearchService.swift in Sources */,
 				E0D908262993D751001C2259 /* HomeView.swift in Sources */,
+				E0102A96299CAD65001D3C08 /* UserProfile.swift in Sources */,
 				E052D88929917BB2004706F5 /* VlogViewModel.swift in Sources */,
 				E052D863298BEAEA004706F5 /* AddReaction.swift in Sources */,
+				E0102A9E299CADD0001D3C08 /* UsersProfileView.swift in Sources */,
+				E0102AA0299CAE1C001D3C08 /* VideotCardService.swift in Sources */,
 				E052D87F29911B61004706F5 /* ErrorMessage.swift in Sources */,
+				E0102A98299CAD9A001D3C08 /* SearchBar.swift in Sources */,
 				E052D874298EEA6D004706F5 /* ImageProfile.swift in Sources */,
+				E0102A9A299CADAD001D3C08 /* ProfileHeader.swift in Sources */,
 				E052D8872991330F004706F5 /* ExtensionFile.swift in Sources */,
 				E052D85D298BEA22004706F5 /* FindFriends.swift in Sources */,
+				E0102A9C299CADBE001D3C08 /* FollowButton.swift in Sources */,
+				E0102A94299CAB27001D3C08 /* VideoModel.swift in Sources */,
+				E0102AA6299CAE44001D3C08 /* FollowService.swift in Sources */,
 				E052D88129911B93004706F5 /* SignUpViewModel.swift in Sources */,
-				E0D9082829941BE4001C2259 /* VlogModel.swift in Sources */,
 				E0D9081E299248AA001C2259 /* AuthService.swift in Sources */,
 				E052D84F298BE942004706F5 /* Main.swift in Sources */,
 				E0D9081729923A25001C2259 /* UserModel.swift in Sources */,
@@ -296,13 +328,13 @@
 				E0D908242993D681001C2259 /* Timeline.swift in Sources */,
 				E052D853298BE95C004706F5 /* SignUp.swift in Sources */,
 				E052D855298BE975004706F5 /* Vlog.swift in Sources */,
+				E0102AA2299CAE2D001D3C08 /* ProfileService.swift in Sources */,
 				E0D9082A2994BF25001C2259 /* VedioService.swift in Sources */,
 				E052D872298ED6A9004706F5 /* ImojiSheet.swift in Sources */,
 				E052D86C298EBA77004706F5 /* ResetPasswordSheet.swift in Sources */,
 				E052D851298BE950004706F5 /* SignIn.swift in Sources */,
 				E052D885299132C7004706F5 /* ImagePicker.swift in Sources */,
 				E052D83E298BE8B6004706F5 /* BriefullApp.swift in Sources */,
-				E052D85F298BEA4F004706F5 /* AddFriends.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

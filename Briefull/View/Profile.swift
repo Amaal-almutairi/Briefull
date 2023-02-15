@@ -6,59 +6,64 @@
 //
 
 import SwiftUI
+import FirebaseAuth
+import Firebase
 
 struct Profile: View {
-    
-    @State var userName = ""
-    @State var nickName = ""
-    @EnvironmentObject var sessionVm: SessionStore
-
-    
+    @EnvironmentObject var session: SessionStore
+    @EnvironmentObject var profileService: ProfileService
+    var user:User
+    //
+    //    func listen(){
+    //        session.listen()
+    //    }
     
     var body: some View {
-        
-        VStack{
-//            NavigationView{
-                ScrollView{
-                    VStack(alignment: .center){
-                        
-                        ZStack(alignment: .bottomTrailing) {
-                            Image("profileImage")
-                                .profileImageMod()
-                            
-                        }
-                        Text(" nickName \(nickName)").font(.headline)
-                        Text(sessionVm.session?.username ?? "UkUsername")
-                        
+        ScrollView{
+            VStack{
+                ProfileHeader(user: self.session.session, postsCounts:
+                                profileService.posts.count, following:
+                                $profileService.following, followers:
+                                $profileService.followers)
+            }
+            .navigationTitle("Profile")
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationBarItems(trailing: Button(action:{}){
+                    NavigationLink(destination: EditPersonalInfo()){
+                       Text("edit")
+                    }
+                    
+                }).accentColor(.black)
+                .navigationBarItems(leading: Button(action:{}){
+                    NavigationLink(destination: FindFriends(user: User(uid: "9988", email: "amaal@gmail.com", profileImageUr1: "", username: "moly", searchName: [""], caption: "molyus"))){
                         HStack{
-                            VStack{
-                                Text(" Vlogs \(nickName)").padding(.leading, 50)
-                                Text(" 6 \(nickName)").font(.headline).padding(.leading, 50)
-                            }
-                            Spacer().padding()
-                            VStack{
-                                Text(" Friends \(nickName)").padding(.trailing, 50)
-                                Text(" 10 \(nickName)").font(.headline).padding(.trailing, 50)
-                            }
-                        } .padding()
-                        Divider().fontWidth(.standard)
-                        Spacer()
-                        
-                    }.navigationTitle("Profile")
-                        .navigationBarItems(trailing: NavigationLink(destination: EditPersonalInfo(), label: {
-                            Text("Edit").foregroundColor(Color("mauve"))
-                        }))
-                }
-//            }
-            .navigationViewStyle(.stack)
+                            Text("request")
+//                            FollowButton(user: user, followCheck: $profileService.followCheck, requestCount: $profileService.requestList, friendstCount: $profileService.friendsList).foregroundColor(.white)
+                            Text("\(profileService.followers)").font(.headline).padding(.trailing, 50)
+
+                        }
+                    }
+
+                }).accentColor(.black)
         }
+        
     }
-    
+}
+struct Profile_Previews: PreviewProvider {
+    @EnvironmentObject var session: SessionStore
+    @EnvironmentObject var profileService:ProfileService
+    static var previews: some View {
+//        Profile()
+        Profile( user: User(uid: "9988", email: "amaal@gmail.com", profileImageUr1: "", username: "moly", searchName: [""], caption: "molyus"))
+            .environmentObject(ProfileService()).environmentObject(SessionStore())
+    }
 }
 
-struct Profile_Previews: PreviewProvider {
-    var sessionVm: SessionStore
-    static var previews: some View {
-        Profile().environmentObject(SessionStore())
-    }
-}
+/*
+ VStack{
+     ProfileHeader(user: self.session.session, vlogsCounts: profileService.videos.count, friends: $profileService.friendsList, request: $profileService.requestList)
+     //                ProfileHeader(user: self.session.session, vlogsCounts: profileService.videos.count , friends:$profileService.friendsList)
+     
+     // .navigationViewStyle(.stack)
+ }
+ */

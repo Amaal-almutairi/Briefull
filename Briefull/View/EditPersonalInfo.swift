@@ -11,14 +11,14 @@ struct EditPersonalInfo: View {
     @EnvironmentObject var sessionVm: SessionStore
     //    @State var changeProfileImage = false
     //    @State var openCameraRoll = false
-        @State var imageSelected: Image?
-        @State var profileImg: Image?
-//        @State var userName = ""
-        @State var nickName = ""
-        @State var showSheetProfile = false
-        @State var showImagePikerProfile = false
-        @State var imageData:Data = Data()
-        @State var sourceType:UIImagePickerController.SourceType = .photoLibrary
+    //        @State var userName = ""
+    @State var nickName = ""
+    @State var imageSelected: Image?
+    @State var profileImg: Image?
+    @State var showSheetProfile = false
+    @State var showImagePikerProfile = false
+    @State var imageData:Data = Data()
+    @State var sourceType:UIImagePickerController.SourceType = .photoLibrary
     
     
     func loadImage() {
@@ -46,7 +46,7 @@ struct EditPersonalInfo: View {
             //                    } else {
                                     ZStack(alignment: .bottomTrailing) {
                                         profileImg? .profileImageMod()
-                                        Image("profileImage")
+                                       Image(systemName: "person.circle")
                                             .profileImageMod()
                                         Image(systemName: "highlighter")
                                             .frame(width: 30, height: 30)
@@ -94,7 +94,9 @@ struct EditPersonalInfo: View {
             }.navigationTitle("Edit Profile").navigationBarTitleDisplayMode(.inline)
                 .navigationBarItems(trailing:
                                         Button {
-                    sessionVm.logout()
+                    
+                    self.sessionVm.logout()
+                    
                 } label: {
                     Image(systemName: "rectangle.portrait.and.arrow.forward").foregroundColor(Color("mauve"))
                    

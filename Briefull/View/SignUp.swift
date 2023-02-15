@@ -15,13 +15,15 @@ struct SignUp: View {
     @State var userName = ""
     @State private var borderColor = Color.clear
     @StateObject private var vm = SignUpViewModel()
-    @EnvironmentObject var coordinator: Coordinator
+//    @EnvironmentObject var coordinator: Coordinator
     @State var showLogInSheet = false
     @Environment(\.presentationMode) var presentationMode
     @State private var error:String = ""
     @State private var showingAlert = false
     @State private var alertTitle: String = "Oh No"
-    
+    @State private var videoData = Data()
+    @State private var isLinkActive = false
+
     func errorCheck() -> String? {
         if email.trimmingCharacters (in: .whitespaces).isEmpty ||
             passWord.trimmingCharacters (in: .whitespaces).isEmpty ||
@@ -36,8 +38,9 @@ struct SignUp: View {
         self.email = ""
         self.userName = ""
         self.passWord = ""
-//        self.imageData = Date()
-        
+        self.ConfermPassWord = ""
+        self.videoData = Data()
+       
     }
     func signUp() {
         if let error = errorCheck() {
@@ -47,7 +50,7 @@ struct SignUp: View {
             return
         }
       
-        AuthService.signUp(username: userName, email: email, password: passWord, imageData:Data(), onSuccess:{
+        AuthService.signUp(username: userName, email: email, password: passWord, imageData:videoData, onSuccess:{
             (user) in self.clear()
         }){ errorMessage in
            print("Error \(errorMessage)")
@@ -70,11 +73,24 @@ struct SignUp: View {
                         TextField("Enter Your Email Address", text: $email).textFieldStyle(RoundedBorderTextFieldStyle()).padding().keyboardType(.emailAddress)
                         SecureField("Enter Your PassWord", text: $passWord).textFieldStyle(RoundedBorderTextFieldStyle()).padding()
                         SecureField("Re - Enter Your PassWord", text: $ConfermPassWord).textFieldStyle(RoundedBorderTextFieldStyle()).padding()
-                        Button {
-                            signUp()
-                        } label: {
+                          
+                               
+                        NavigationLink(destination: Tab(), isActive: $isLinkActive){
+                   
+                            Button(action: { signUp()
+                                self.isLinkActive = true
+                            
+                        }){
                             Text("Sign Up")
-                        }.modifier(Items.ButtonModifier()).alert(isPresented: $showingAlert){
+                        }
+//                        .navigationDestination(
+//                            isPresented: $isLinkActive) {
+//                             SignIn()
+//
+//                          }
+//                            Text("").hidden()
+                        }
+                        .modifier(Items.ButtonModifier()).alert(isPresented: $showingAlert){
                             Alert(title: Text(alertTitle),message: Text(error),dismissButton: .default(Text("OK")))
                         }
 //
@@ -91,9 +107,9 @@ struct SignUp: View {
 //
 //
 //                        }.modifier(Items.ButtonModifier()).padding().foregroundColor(.white)
-                        if let errorMessage = vm.errorMessage {
-                            Text(errorMessage)
-                        }
+//                        if let errorMessage = vm.errorMessage {
+//                            Text(errorMessage)
+//                        }
                         HStack{
                             Spacer()
 //                            NavigationLink(destination: SignIn()) {

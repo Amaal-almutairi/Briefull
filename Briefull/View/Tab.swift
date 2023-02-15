@@ -17,7 +17,7 @@ struct Tab: View {
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .center, vertical: .bottom)) {
             TabView(selection: $selection){
-                Profile()
+                Profile( user: User(uid: "9988", email: "amaal@gmail.com", profileImageUr1: "", username: "moly", searchName: [""], caption: "molyus"))
                     .tag("person.fill")
                 Vlog()
                     .tag("camera.viewfinder")

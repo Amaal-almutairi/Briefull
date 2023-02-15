@@ -24,6 +24,22 @@ struct Items: View {
         }
     }
     
+    struct ButtonModifierRequest: ViewModifier {
+        @State var frameSize: CGFloat = UIScreen.main.bounds.width - 20 // display the content in all iphones in the same size(width only)
+
+        func body(content: Content) -> some View {
+            content
+                .font(.headline)
+               // .frame(maxWidth: .infinity)
+                .frame(width:70,height: 20)
+                .background(Color.black)
+                .foregroundColor(.white)
+                .cornerRadius(20)
+                
+               
+        }
+    }
+    
     struct TexStyleModifier: ViewModifier {
         @State var frameSize: CGFloat = UIScreen.main.bounds.width - 20 // display the content in all iphones in the same size(width only)
 

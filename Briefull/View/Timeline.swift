@@ -49,12 +49,19 @@ struct Timeline: View {
                 }
       
             }
-            .navigationBarTitle(Text("Time line"))
-            .navigationBarItems(trailing:
-        NavigationLink(destination: AddFriends(), label: {
-                    Image(systemName: "person.badge.plus")
-                        .accentColor(.black)
-            }))
+            .navigationTitle("Time line")
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarItems(trailing: Button(action:{}){
+            NavigationLink(destination: UserProfile( user: User(uid: "9988", email: "amaal@gmail.com", profileImageUr1: "", username: "moly", searchName: [""], caption: "molyus"))){
+                Image(systemName: "person.badge.plus")
+            }
+        }).accentColor(.black)
+        
+//            .navigationBarItems(trailing:
+//        NavigationLink(destination: AddFriends(), label: {
+//                    Image(systemName: "person.badge.plus")
+//                        .accentColor(.black)
+//            }))
       //  }
     }
 }

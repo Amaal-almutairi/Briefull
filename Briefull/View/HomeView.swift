@@ -6,11 +6,12 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct HomeView: View {
-
+//    var user:User
     @EnvironmentObject var session: SessionStore
-    
+    @EnvironmentObject var profileService:ProfileService
     
     func listen(){
         session.listen()
@@ -27,7 +28,7 @@ struct HomeView: View {
         }.onAppear(perform: listen)
      
  
-
+// && user.username == profileService.friendsList
             
     }
 }
