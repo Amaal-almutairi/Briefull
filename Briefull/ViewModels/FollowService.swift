@@ -11,23 +11,26 @@ import Firebase
 
 class FollowService: ObservableObject {
     
-    func updateFollowCount(userId: String, followingCount: @escaping (_ followingCount: Int)-> Void, followersCount: @escaping (_ followingCount: Int)-> Void) {
+    func updateFollowCount(userId: String, followingCount: @escaping(_ followingCount: Int)-> Void, followersCount: @escaping(_ followingCount: Int)-> Void) {
         
-        ProfileService.followingCollection (userid: userId).getDocuments{
+        ProfileService.followingCollection(userid: userId).getDocuments{
             (snap, error) in
+            
             if let doc = snap?.documents{
-                followingCount (doc.count)
+                followingCount(doc.count)
             }
         }
-        ProfileService.followersCollection (userid: userId).getDocuments{
+        ProfileService.followersCollection(userid: userId).getDocuments{
             (snap, error) in
+            
             if let doc = snap?.documents {
-                followersCount (doc.count)
+                followersCount(doc.count)
             }
         }
     }
     
-    func manageFollow(userId: String, followCheck: Bool, followingCount: @escaping (_ followingCount: Int)-> Void, followersCount: @escaping (_ followingCount: Int)-> Void) {
+    // it will check weather or not followcheck is true or false
+    func manageFollow(userId: String, followCheck: Bool, followingCount: @escaping(_ followingCount: Int)-> Void, followersCount: @escaping(_ followingCount: Int)-> Void) {
         
         if !followCheck {
             follow(userId: userId, followingCount: followingCount, followersCount: followersCount)
@@ -36,7 +39,7 @@ class FollowService: ObservableObject {
         }
     }
     
-    func follow(userId: String, followingCount: @escaping (_ followingCount: Int)-> Void, followersCount: @escaping (_ followingCount: Int)-> Void) {
+    func follow(userId: String, followingCount: @escaping(_ followingCount: Int)-> Void, followersCount: @escaping(_ followingCount: Int)-> Void) {
         ProfileService.followingId(userId: userId).setData([:]){
             (err) in
             if err == nil {
@@ -47,19 +50,25 @@ class FollowService: ObservableObject {
         ProfileService.followersId(userld: userId).setData([:]){
             (err) in
             if err == nil {
-                self.updateFollowCount (userId: userId, followingCount: followingCount, followersCount: followersCount)
+                self.updateFollowCount(userId: userId, followingCount: followingCount, followersCount: followersCount)
                 
             }
             
         }
     }
     
-    func unfollow(userId: String, followingCount: @escaping (_ followingCount: Int)-> Void, followersCount: @escaping (_ followingCount: Int)-> Void) {
+    func unfollow(userId: String, followingCount: @escaping(_ followingCount: Int)-> Void, followersCount: @escaping(_ followingCount: Int)-> Void) {
+        
         ProfileService.followingId(userId: userId).getDocument {
             (document, err) in
+            
             if let doc = document, doc.exists {
-                doc.reference.delete ()
+                doc.reference.delete()
+                // after we delete users we update followers
                 self.updateFollowCount(userId: userId, followingCount: followingCount, followersCount: followersCount)
+            }
+        }
+        
                 ProfileService.followersId(userld: userId).getDocument {
                     (document, err) in
                     if let doc = document, doc.exists {
@@ -69,11 +78,7 @@ class FollowService: ObservableObject {
                 }
             }
         }
-    }
-    
-    
-}
-    /*
+   /*
      class FollowService: ObservableObject {
      
      func updateRequestCount(userId: String, requestCount: @escaping (_ requestCount:Int) -> Void, friendstCount: @escaping (_ friendstCount:Int)-> Void){

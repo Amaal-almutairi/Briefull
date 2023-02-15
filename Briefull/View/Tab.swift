@@ -9,7 +9,8 @@ import SwiftUI
 
 struct Tab: View {
     @EnvironmentObject var session: SessionStore
-
+// user: User(uid: "9988", email: "amaal@gmail.com", profileImageUr1: "", username: "moly", searchName: [""], caption: "molyus")
+    
 //    @State var selection = 2
     @State var selection = "person.fill"
 //    @State var edg = UIApplication.shared.windows.first?.safeAreaInsets
@@ -17,7 +18,7 @@ struct Tab: View {
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .center, vertical: .bottom)) {
             TabView(selection: $selection){
-                Profile( user: User(uid: "9988", email: "amaal@gmail.com", profileImageUr1: "", username: "moly", searchName: [""], caption: "molyus"))
+                Profile()
                     .tag("person.fill")
                 Vlog()
                     .tag("camera.viewfinder")

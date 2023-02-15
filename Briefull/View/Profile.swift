@@ -12,7 +12,7 @@ import Firebase
 struct Profile: View {
     @EnvironmentObject var session: SessionStore
     @EnvironmentObject var profileService: ProfileService
-    var user:User
+//    var user:User
     //
     //    func listen(){
     //        session.listen()
@@ -34,17 +34,17 @@ struct Profile: View {
                     }
                     
                 }).accentColor(.black)
-                .navigationBarItems(leading: Button(action:{}){
-                    NavigationLink(destination: FindFriends(user: User(uid: "9988", email: "amaal@gmail.com", profileImageUr1: "", username: "moly", searchName: [""], caption: "molyus"))){
-                        HStack{
-                            Text("request")
-//                            FollowButton(user: user, followCheck: $profileService.followCheck, requestCount: $profileService.requestList, friendstCount: $profileService.friendsList).foregroundColor(.white)
-                            Text("\(profileService.followers)").font(.headline).padding(.trailing, 50)
-
-                        }
-                    }
-
-                }).accentColor(.black)
+//                .navigationBarItems(leading: Button(action:{}){
+//                    NavigationLink(destination: FindFriends(user: User(uid: "9988", email: "amaal@gmail.com", profileImageUr1: "", username: "moly", searchName: [""], caption: "molyus"))){
+//                        HStack{
+//                            Text("request")
+////                            FollowButton(user: user, followCheck: $profileService.followCheck, requestCount: $profileService.requestList, friendstCount: $profileService.friendsList).foregroundColor(.white)
+////                            Text("\(profileService.followers)").font(.headline).padding(.trailing, 50)
+//
+//                        }
+//                    }
+//
+//                }).accentColor(.black)
         }
         
     }
@@ -53,8 +53,8 @@ struct Profile_Previews: PreviewProvider {
     @EnvironmentObject var session: SessionStore
     @EnvironmentObject var profileService:ProfileService
     static var previews: some View {
-//        Profile()
-        Profile( user: User(uid: "9988", email: "amaal@gmail.com", profileImageUr1: "", username: "moly", searchName: [""], caption: "molyus"))
+        Profile()
+//        Profile( user: User(uid: "9988", email: "amaal@gmail.com", profileImageUr1: "", username: "moly", searchName: [""], caption: "molyus"))
             .environmentObject(ProfileService()).environmentObject(SessionStore())
     }
 }

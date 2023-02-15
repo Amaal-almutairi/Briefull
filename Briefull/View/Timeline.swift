@@ -66,8 +66,8 @@ struct Timeline: View {
     }
 }
 
-struct Timeline_Previews: PreviewProvider {
-    static var previews: some View {
-        Timeline()
-    }
-}
+//struct Timeline_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Timeline()
+//    }
+//}

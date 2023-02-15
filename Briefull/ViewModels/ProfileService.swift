@@ -20,11 +20,11 @@ class ProfileService: ObservableObject {
     static var following = AuthService.storeRoot.collection("following")
     static var followers = AuthService.storeRoot.collection("followers")
     
-    static func followingCollection (userid: String) -> CollectionReference{
-        return following.document (userid) .collection ("following")
+    static func followingCollection(userid: String) -> CollectionReference{
+        return following.document(userid).collection("following")
     }
-    static func followersCollection (userid: String) -> CollectionReference{
-        return followers.document (userid) .collection("followers")
+    static func followersCollection(userid: String) -> CollectionReference{
+        return followers.document(userid).collection("followers")
         func loadUserPosts(userId: String ){
             VideoService.loadUserVideo(userId: userId) {
                 (posts ) in
@@ -33,25 +33,28 @@ class ProfileService: ObservableObject {
     }
     static func followingId(userId: String) -> DocumentReference {
         
-        return following.document (Auth.auth().currentUser!.uid).collection("following") .document (userId)
+        return following.document(Auth.auth().currentUser!.uid).collection("following").document(userId)
         
     }
     
     
     static func followersId(userld: String) -> DocumentReference {
-        return followers.document(userld).collection("followers").document (Auth.auth().currentUser!.uid)
+        return followers.document(userld).collection("followers").document(Auth.auth().currentUser!.uid)
     }
     
+    // if we check inside following  we find user id that means wer'e following
     func followState(userid: String) {
         ProfileService.followingId(userId: userid).getDocument{
             (document, error) in
             if let doc = document, doc.exists {
                 self.followCheck = true
             } else {
+                // if we don't have the following id that means weren't folloing that uers
                 self.followCheck = false
             }
         }
     }
+    //
     func loadUserPosts(userId: String ){
         VideoService.loadUserVideo(userId: userId) {
             (posts) in
@@ -66,6 +69,7 @@ class ProfileService: ObservableObject {
             (querysnapshot, err) in
             if let doc = querysnapshot?.documents {
                 self.following = doc.count
+//                print(self.users)
             }
         }
     }
@@ -74,7 +78,8 @@ class ProfileService: ObservableObject {
             (querysnapshot, err) in
             
             if let doc = querysnapshot?.documents {
-                self.followers = doc .count
+                self.followers = doc.count
+                
             }
         }
     }

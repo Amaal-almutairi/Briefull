@@ -76,16 +76,16 @@ struct ProfileHeader: View {
         
     }
 }
-struct ProfileHeader_Previews: PreviewProvider {
-    @EnvironmentObject var sessionVm: SessionStore
-
-    static var previews: some View {
-        
-        ProfileHeader(user: User?(User(uid: "9988", email: "amaal@gmail.com", profileImageUr1: "", username: "moly", searchName: [""], caption: "molyus")), postsCounts: 0, following:.constant(0), followers:.constant(0))
-        
-//        ProfileHeader(user: User(uid: "9988", email: "amaal@gmail.com", profileImageUr1: "", username: "moly", searchName: [""], caption: "molyus"), vlogsCounts: .constant(0), friends:.constant(0))
-            .environmentObject(SessionStore())
-        
-    }
-}
+//struct ProfileHeader_Previews: PreviewProvider {
+//    @EnvironmentObject var sessionVm: SessionStore
+//
+//    static var previews: some View {
+//        
+//        ProfileHeader(user: User?(User(uid: "9988", email: "amaal@gmail.com", profileImageUr1: "", username: "moly", searchName: [""], caption: "molyus")), postsCounts: 0, following:.constant(0), followers:.constant(0))
+//        
+////        ProfileHeader(user: User(uid: "9988", email: "amaal@gmail.com", profileImageUr1: "", username: "moly", searchName: [""], caption: "molyus"), vlogsCounts: .constant(0), friends:.constant(0))
+//            .environmentObject(SessionStore())
+//        
+//    }
+//}
 

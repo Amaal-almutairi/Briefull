@@ -33,10 +33,10 @@ struct HomeView: View {
     }
 }
 
-struct HomeView_Previews: PreviewProvider {
-    var session:SessionStore
-
-    static var previews: some View {
-        HomeView().environmentObject(SessionStore())
-    }
-}
+//struct HomeView_Previews: PreviewProvider {
+//    var session:SessionStore
+//
+//    static var previews: some View {
+//        HomeView().environmentObject(SessionStore())
+//    }
+//}
